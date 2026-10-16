@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Барбершоп ROCK.STAR — Пермь, Максима Горького, 54</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Arial', sans-serif; color: #1a1a1a; line-height: 1.6; background: #0d0d0d; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+header { background: #0d0d0d; position: sticky; top: 0; z-index: 100; padding: 15px 0; border-bottom: 2px solid #c9a227; }
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+.logo { display: flex; align-items: center; gap: 12px; }
+.logo-circle { width: 52px; height: 52px; background: #c9a227; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; color: #0d0d0d; font-size: 10px; text-align: center; line-height: 1.1; }
+.logo h1 { font-size: 20px; color: #fff; }
+.logo p { font-size: 12px; color: #c9a227; }
+nav a { margin: 0 12px; text-decoration: none; color: #ccc; font-weight: 500; font-size: 14px; }
+nav a:hover { color: #c9a227; }
+.header-phone { font-weight: 700; color: #c9a227; text-decoration: none; }
+.btn { display: inline-block; background: #c9a227; color: #0d0d0d; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-weight: 700; border: none; cursor: pointer; font-size: 15px; transition: 0.3s; }
+.btn:hover { background: #e0b93a; transform: translateY(-2px); }
+.btn-outline { background: transparent; border: 2px solid #c9a227; color: #c9a227; }
+.btn-outline:hover { background: #c9a227; color: #0d0d0d; }
+.hero { background: #0d0d0d; color: #fff; padding: 80px 0; position: relative; overflow: hidden; }
+.hero::after { content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,162,39,0.15) 0%, transparent 70%); border-radius: 50%; }
+.hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; position: relative; z-index: 1; }
+.hero h2 { font-size: 48px; font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+.hero h2 span { color: #c9a227; }
+.hero p { font-size: 18px; color: #bbb; margin-bottom: 30px; }
+.hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+.hero-stats { display: flex; gap: 30px; margin-top: 40px; }
+.hero-stats .num { font-size: 32px; font-weight: 900; color: #c9a227; }
+.hero-stats .label { font-size: 14px; color: #888; }
+.hero-photo { border-radius: 12px; overflow: hidden; height: 460px; border: 2px solid #c9a227; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+section { padding: 80px 0; }
+.section-title { text-align: center; margin-bottom: 50px; }
+.section-title h2 { font-size: 36px; font-weight: 900; margin-bottom: 10px; }
+.section-title p { color: #888; font-size: 18px; }
+.about { background: #141414; color: #fff; }
+.about .section-title h2 { color: #fff; }
+.about .section-title p { color: #aaa; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.about-grid h3 { font-size: 28px; margin-bottom: 20px; color: #fff; }
+.about-grid p { margin-bottom: 15px; color: #bbb; font-size: 17px; }
+.about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+.feature { background: #1f1f1f; padding: 20px; border-radius: 12px; border-left: 4px solid #c9a227; }
+.feature .icon { font-size: 28px; margin-bottom: 10px; }
+.feature h4 { font-size: 16px; margin-bottom: 5px; color: #fff; }
+.feature p { font-size: 13px; color: #888; }
+.about-photo { border-radius: 12px; overflow: hidden; height: 450px; border: 2px solid #c9a227; }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.services { background: #0d0d0d; color: #fff; }
+.services .section-title h2 { color: #fff; }
+.services .section-title p { color: #aaa; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+.service-card { background: #1a1a1a; border-radius: 12px; padding: 30px; transition: 0.3s; border-top: 3px solid #c9a227; }
+.service-card:hover { transform: translateY(-5px); background: #222; }
+.service-card h3 { font-size: 19px; margin-bottom: 10px; color: #fff; }
+.service-card .price { font-size: 22px; font-weight: 900; color: #c9a227; margin-top: 15px; }
+.prices { background: #141414; }
+.price-table { background: #1a1a1a; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.3); max-width: 800px; margin: 0 auto; }
+.price-table table { width: 100%; border-collapse: collapse; }
+.price-table th { background: #c9a227; color: #0d0d0d; padding: 18px; text-align: left; font-size: 16px; }
+.price-table td { padding: 15px 18px; border-bottom: 1px solid #2a2a2a; font-size: 15px; color: #ddd; }
+.price-table tr:last-child td { border-bottom: none; }
+.price-table tr:hover { background: #222; }
+.price-table .price { font-weight: 700; color: #c9a227; font-size: 18px; }
+.reviews { background: #0d0d0d; color: #fff; }
+.reviews .section-title h2 { color: #fff; }
+.reviews .section-title p { color: #aaa; }
+.reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+.review-card { background: #1a1a1a; border-radius: 12px; padding: 30px; border-left: 4px solid #c9a227; }
+.review-card .stars { color: #c9a227; font-size: 18px; margin-bottom: 15px; }
+.review-card p { color: #ccc; font-size: 15px; margin-bottom: 15px; font-style: italic; }
+.review-card .author { color: #c9a227; font-weight: 700; font-size: 14px; }
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.gallery-item { border-radius: 12px; overflow: hidden; height: 280px; border: 1px solid #c9a227; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+.gallery-item:hover img { transform: scale(1.05); }
+.cta { background: linear-gradient(135deg, #c9a227 0%, #8a6a1f 100%); color: #0d0d0d; text-align: center; padding: 60px 0; }
+.cta h2 { font-size: 36px; font-weight: 900; margin-bottom: 15px; }
+.cta p { font-size: 18px; margin-bottom: 30px; }
+.cta .btn { background: #0d0d0d; color: #c9a227; }
+.cta .btn:hover { background: #222; }
+.contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+.contacts-grid h3 { font-size: 28px; margin-bottom: 25px; color: #fff; }
+.contact-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
+.contact-item .icon { font-size: 24px; }
+.contact-item h4 { font-size: 16px; margin-bottom: 3px; color: #fff; }
+.contact-item p { color: #bbb; font-size: 15px; }
+.contact-item a { color: #c9a227; text-decoration: none; font-weight: 600; }
+.contact-map { background: #1a1a1a; border-radius: 12px; height: 400px; display: flex; align-items: center; justify-content: center; color: #888; font-size: 18px; border: 1px solid #c9a227; }
+footer { background: #0d0d0d; color: #888; padding: 30px 0; text-align: center; font-size: 14px; border-top: 1px solid #222; }
+footer a { color: #c9a227; text-decoration: none; }
+@media (max-width: 768px) {
+  .hero-inner, .about-grid, .contacts-grid { grid-template-columns: 1fr; }
+  .hero h2 { font-size: 32px; }
+  .services-grid, .gallery-grid, .reviews-grid { grid-template-columns: 1fr; }
+  nav { display: none; }
+  .hero-stats { flex-wrap: wrap; gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container header-inner">
+    <div class="logo">
+      <div class="logo-circle">R★S</div>
+      <div><h1>ROCK.STAR</h1><p>барбершоп · Пермь</p></div>
+    </div>
+    <nav>
+      <a href="#about">О нас</a>
+      <a href="#services">Услуги</a>
+      <a href="#prices">Цены</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#gallery">Работы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a href="tel:+73422711130" class="header-phone">+7 (342) 271-11-30</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-inner">
+    <div>
+      <h2>Барбершоп<br><span>ROCK.STAR</span></h2>
+      <p>Для тех, кто живёт по правилам рок-н-ролла. Мы верим, что стрижка — это не просто процедура, а часть твоего стиля. Нам 1 год — и это только начало.</p>
+      <div class="hero-buttons">
+        <a href="#contacts" class="btn">Записаться онлайн</a>
+        <a href="tel:+73422711130" class="btn btn-outline">📞 Позвонить</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="num">1,1К</div><div class="label">подписчиков</div></div>
+        <div><div class="num">5,0</div><div class="label">рейтинг</div></div>
+        <div><div class="num">1 год</div><div class="label">нам</div></div>
+      </div>
+    </div>
+    <div class="hero-photo"><img src="photo1.jpg" alt="ROCK.STAR"></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-title">
+      <h2>О барбершопе</h2>
+      <p>Не просто стрижка, а часть твоего стиля</p>
+    </div>
+    <div class="about-grid">
+      <div>
+        <h3>ROCK★STAR — нам год, и это только начало</h3>
+        <p>«Rock Star» — барбершоп для тех, кто живёт по правилам рок-н-ролла. За этот год мы прошли свой путь: новые стрижки, эксперименты, перемены. Но самое главное — вокруг ROCK★STAR сформировалось нечто большее, чем просто барбершоп.</p>
+        <p>Наши клиенты — наша сила. Мы делаем стрижки, которые держат форму, и создаём атмосферу, в которую хочется возвращаться.</p>
+        <div class="about-features">
+          <div class="feature"><div class="icon">🎸</div><h4>Рок-н-ролл</h4><p>Атмосфера и стиль</p></div>
+          <div class="feature"><div class="icon">✂️</div><h4>Мастера</h4><p>Опытные барберы</p></div>
+          <div class="feature"><div class="icon">🧔</div><h4>Борода</h4><p>Оформление и камуфляж</p></div>
+          <div class="feature"><div class="icon">👦</div><h4>Детские стрижки</h4><p>Для маленьких рок-звёзд</p></div>
+        </div>
+      </div>
+      <div class="about-photo"><img src="photo2.jpg" alt="Барбершоп"></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-title"><h2>Наши услуги</h2><p>Всё для твоего стиля</p></div>
+    <div class="services-grid">
+      <div class="service-card"><h3>Стрижка</h3><p>Классическая или современная</p><div class="price">2 000 ₽</div></div>
+      <div class="service-card"><h3>Комбо</h3><p>Стрижка + борода</p><div class="price">2 200–3 500 ₽</div></div>
+      <div class="service-card"><h3>Борода с контуром</h3><p>Оформление и уход</p><div class="price">1 500 ₽</div></div>
+      <div class="service-card"><h3>Оформление бороды</h3><p>Форма и уход</p><div class="price">1 200 ₽</div></div>
+      <div class="service-card"><h3>Камуфляж</h3><p>Скрытие седины</p><div class="price">1 500 ₽</div></div>
+      <div class="service-card"><h3>Детская стрижка</h3><p>Для маленьких рок-звёзд</p><div class="price">1 200–1 700 ₽</div></div>
+      <div class="service-card"><h3>Стрижка машинкой</h3><p>Быстро и стильно</p><div class="price">1 500 ₽</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="prices" id="prices">
+  <div class="container">
+    <div class="section-title"><h2>Цены</h2><p>Прозрачно и без сюрпризов</p></div>
+    <div class="price-table"><table>
+      <tr><th>Услуга</th><th>Цена</th></tr>
+      <tr><td>Стрижка</td><td class="price">2 000 ₽</td></tr>
+      <tr><td>Стрижка машинкой</td><td class="price">1 500 ₽</td></tr>
+      <tr><td>Детская стрижка</td><td class="price">1 200–1 700 ₽</td></tr>
+      <tr><td>Оформление бороды</td><td class="price">1 200 ₽</td></tr>
+      <tr><td>Борода с контурным оформлением</td><td class="price">1 500 ₽</td></tr>
+      <tr><td>Камуфляж (скрытие седины)</td><td class="price">1 500 ₽</td></tr>
+      <tr><td>Комбо (стрижка + борода)</td><td class="price">2 200–3 500 ₽</td></tr>
+    </table></div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="section-title"><h2>Отзывы</h2><p>Что говорят наши клиенты</p></div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>«ROCK★STAR — нам год, и это только начало. За это время вокруг нас сформировалось нечто большее, чем просто барбершоп».</p>
+        <div class="author">— Команда ROCK.STAR</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>«Классная атмосфера, мастера знают своё дело. Хожу сюда постоянно, всегда доволен результатом».</p>
+        <div class="author">— Клиент барбершопа</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>«Стрижка держит форму, борода выглядит отлично. Рекомендую всем, кто ценит стиль».</p>
+        <div class="author">— Клиент барбершопа</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="container">
+    <div class="section-title"><h2>Наши работы</h2><p>Результаты, которыми гордимся</p></div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><img src="photo3.jpg" alt="Работа"></div>
+      <div class="gallery-item"><img src="photo4.jpg" alt="Работа"></div>
+      <div class="gallery-item"><img src="photo5.jpg" alt="Работа"></div>
+      <div class="gallery-item"><img src="photo6.jpg" alt="Работа"></div>
+      <div class="gallery-item"><img src="photo7.jpg" alt="Работа"></div>
+      <div class="gallery-item"><img src="photo8.jpg" alt="Работа"></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Запишись на стрижку сегодня</h2>
+    <p>Позвони или запишись онлайн — подберём удобное время</p>
+    <a href="tel:+73422711130" class="btn">📞 Записаться</a>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="container">
+    <div class="section-title"><h2>Контакты</h2><p>Ждём вас в барбершопе</p></div>
+    <div class="contacts-grid">
+      <div>
+        <h3>ROCK.STAR</h3>
+        <div class="contact-item"><div class="icon">📍</div><div><h4>Адрес</h4><p>г. Пермь, ул. Максима Горького, 54</p></div></div>
+        <div class="contact-item"><div class="icon">📞</div><div><h4>Телефон</h4><p><a href="tel:+73422711130">+7 (342) 271-11-30</a></p></div></div>
+        <div class="contact-item"><div class="icon">🌐</div><div><h4>ВКонтакте</h4><p><a href="https://vk.com/rock_star_bsh" target="_blank">vk.com/rock_star_bsh</a></p></div></div>
+        <div class="contact-item"><div class="icon">🎸</div><div><h4>Атмосфера</h4><p>Рок-н-ролл и стиль</p></div></div>
+      </div>
+      <div class="contact-map">🗺️ Карта — Максима Горького, 54, Пермь</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Барбершоп ROCK.STAR · Пермь, ул. Максима Горького, 54 · <a href="tel:+73422711130">+7 (342) 271-11-30</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
